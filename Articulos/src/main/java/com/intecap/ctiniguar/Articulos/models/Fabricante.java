@@ -1,5 +1,6 @@
 package com.intecap.ctiniguar.Articulos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 public class Fabricante implements Serializable {
-
+    private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
@@ -28,6 +29,7 @@ public class Fabricante implements Serializable {
             orphanRemoval = true,
             mappedBy = "fabricante"
     )
+    @JsonIgnore
     private Set<Articulo> articulos;
 
 

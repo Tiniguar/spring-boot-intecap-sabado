@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class Articulo {
+    private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
@@ -23,7 +24,7 @@ public class Articulo {
     private BigDecimal precio;
 
     @ManyToOne
-    @JoinColumn(name="fabricante_id")
+    @JoinColumn(name="fabricante_id",nullable = false)
     private Fabricante fabricante;
 
     public Long getId() {
