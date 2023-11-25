@@ -14,4 +14,6 @@ public interface IFabricanteService {
     public ResponseEntity<FabricanteResponseRest> actualizarFabricante(Fabricante fabricante, Long id);
 
     public ResponseEntity<FabricanteResponseRest> eliminarFabricante(Long id);
+
+    public Boolean existeNombreFabricante(String nombre);
 }

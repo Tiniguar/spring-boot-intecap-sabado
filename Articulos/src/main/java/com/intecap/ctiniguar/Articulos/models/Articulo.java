@@ -1,8 +1,11 @@
 package com.intecap.ctiniguar.Articulos.models;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity(name = "articulo")
@@ -18,11 +21,17 @@ public class Articulo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
+    @NotBlank(message = "Nombre es un campo requerido")
+    @NotNull(message = "El nombre es requerido")
     @Column(length = 45)
     private String  nombre;
 
+    @NotBlank(message = "Precio es un campo requerido")
+    @NotNull(message = "El precio es requerido")
     private BigDecimal precio;
 
+    @NotBlank(message = "fabricante_id es un campo requerido")
+    @NotNull(message = "El fabricante_id es requerido")
     @ManyToOne
     @JoinColumn(name="fabricante_id",nullable = false)
     private Fabricante fabricante;

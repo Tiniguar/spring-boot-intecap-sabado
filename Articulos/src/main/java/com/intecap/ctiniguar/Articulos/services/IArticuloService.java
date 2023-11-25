@@ -16,4 +16,6 @@ public interface IArticuloService {
     public ResponseEntity<ArticuloResponseRest> actualizarArticulo(Articulo articulo, Long id);
 
     public ResponseEntity<ArticuloResponseRest> eliminarArticulo(Long id);
+
+    public  Boolean existeNombreArticulo (String nombre);
 }

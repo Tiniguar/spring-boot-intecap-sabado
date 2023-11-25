@@ -2,11 +2,9 @@ package com.intecap.ctiniguar.Articulos.services;
 
 import com.intecap.ctiniguar.Articulos.models.Articulo;
 import com.intecap.ctiniguar.Articulos.models.dao.IArticuloDao;
-import com.intecap.ctiniguar.Articulos.models.dao.IFabricanteDao;
 import com.intecap.ctiniguar.Articulos.response.ArticuloResponseRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -227,5 +225,12 @@ public class ArticuloService implements  IArticuloService {
 
         // se retona la respuesta al cliente
         return new ResponseEntity<ArticuloResponseRest>(articuloResponseRest, HttpStatus.OK);
+    }
+
+    @Override
+    @Transactional (readOnly = true)
+    public Boolean existeNombreArticulo(String nombre) {
+        Optional<Articulo> articulo = articuloDao.findByNombre(nombre);
+        return articulo.isPresent();
     }
 }

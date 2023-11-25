@@ -1,7 +1,9 @@
 package com.intecap.ctiniguar.Articulos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serializable;
@@ -18,6 +20,8 @@ public class Fabricante implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
+    @NotBlank(message = "Nombre es un campo requerido")
+    @NotNull(message = "El nombre es requerido")
     @Column(length = 45)
     private String  nombre;
 

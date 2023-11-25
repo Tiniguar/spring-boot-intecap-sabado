@@ -240,4 +240,12 @@ public class FabricanteService implements IFabricanteService {
         // se retona la respuesta al cliente
         return new ResponseEntity<FabricanteResponseRest>(fabricanteResponseRest, HttpStatus.OK);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Boolean existeNombreFabricante(String nombre) {
+        Optional<Fabricante> fabricante = fabricanteDao.findByNombre(nombre);
+        return fabricante.isPresent();
+    }
+
 }
